@@ -1,4 +1,4 @@
-with open("inputs/day_6_input.txt", "r") as input:
+with open("inputs/day_6_custom_customs_input.txt", "r") as input:
     lines = list(input.read().rstrip().split('\n\n'))
 
 groups = [l.split('\n') for l in lines]
