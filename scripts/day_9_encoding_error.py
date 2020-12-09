@@ -3,6 +3,7 @@ from itertools import compress
 with open("inputs/day_9_input_encoding_error.txt", "r") as input:
     lines = list(map(int, input.read().split('\n')[:-1]))
 
+# part 1
 input_length = 25
 
 ok_numbers = []
@@ -28,15 +29,13 @@ list_to_search = list(compress(
     lines, [l != invalid_number for l in lines]
 ))
 
-correct_contiguous_sets = []
-for i in range(1, len(list_to_search) - 1):
-    for j in range(i + 1, len(list_to_search)):
-        contiguous_set = list_to_search[i:j]
-        if sum(contiguous_set) == invalid_number:
-            correct_contiguous_sets.append(contiguous_set)
+def getFirstContiguousSet(list_to_search, target_number):
+    for i in range(1, len(list_to_search) - 1):
+        for j in range(i + 1, len(list_to_search)):
+            contiguous_set = list_to_search[i:j]
+            if sum(contiguous_set) == target_number:
+                return(contiguous_set)
 
-print(min(correct_contiguous_sets[0]) + max(correct_contiguous_sets[0]))
+correct_contiguous_sets = getFirstContiguousSet(list_to_search, invalid_number)
+print(min(correct_contiguous_sets) + max(correct_contiguous_sets))
 # 23463012
-
-
-_encoding_error
