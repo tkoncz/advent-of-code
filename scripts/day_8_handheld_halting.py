@@ -1,6 +1,6 @@
 import re
 
-with open("inputs/day_8_input.txt", "r") as input:
+with open("inputs/day_8_input_handheld_halting.txt", "r") as input:
     lines = input.read().split('\n')[:-1]
 
 pattern = '^(nop|acc|jmp) ([+-]\\d+)$'
