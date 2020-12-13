@@ -1,4 +1,4 @@
-with open("inputs/day_13_shuttle_search_input", "r") as input:
+with open("inputs/day_13_shuttle_search_input.txt", "r") as input:
     lines = input.read().rstrip().split('\n')
 
 earliest_departure = int(lines[0])
