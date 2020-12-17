@@ -1,7 +1,7 @@
 import re
 from itertools import compress
 
-with open("inputs/day_16_input.txt", "r") as input:
+with open("inputs/day_16_ticket_translation_input.txt", "r") as input:
     lines = input.read().rstrip().split('\n\n')
 
 def convertStrToIntList(str_list):
