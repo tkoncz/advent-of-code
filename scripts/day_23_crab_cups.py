@@ -1,7 +1,7 @@
 from itertools import compress
 from collections import deque
 
-input = '389125467'
+input = '327465189'
 
 # part 1
 def moveCups(cups, current_cup_id, num_cups):
@@ -71,3 +71,39 @@ final_cup_order = ''.join([
 
 print(final_cup_order)
 # 82934675
+
+
+# part 2
+cups = [int(d) for d in input]
+total_cups =  1_000_000
+additional_cups = [cup for cup in range(max(cups) + 1, (total_cups + 1))]
+cups = cups + additional_cups
+num_cups = len(cups)
+
+cups_dict = {cups[i]: cups[(i + 1) % num_cups] for i in range(0, num_cups)}
+current_cup = cups[0]
+for i in range(0, 10_000_000):
+    # print(' ------------------------------------ ')
+    # print(f'current cup: {current_cup}')
+
+    pickup_cup_1 = cups_dict[current_cup]
+    pickup_cup_2 = cups_dict[pickup_cup_1]
+    pickup_cup_3 = cups_dict[pickup_cup_2]
+    # print(f'pickups: {[pickup_cup_1, pickup_cup_2, pickup_cup_3]}')
+
+    cup_after_pickups = cups_dict[pickup_cup_3]
+    cups_dict[current_cup] = cup_after_pickups
+    # print(f'cup after pickups: {cup_after_pickups}')
+
+    destination_cup = getDestinationCup(
+        current_cup, [pickup_cup_1, pickup_cup_2, pickup_cup_3], num_cups
+    )
+    # print(f'destination cup: {destination_cup}')
+
+    cups_dict[pickup_cup_3] = cups_dict[destination_cup]
+    cups_dict[destination_cup] = pickup_cup_1
+
+    current_cup = cup_after_pickups
+
+print(cups_dict[1] * cups_dict[cups_dict[1]])
+# 474600314018
