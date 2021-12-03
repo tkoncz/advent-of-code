@@ -19,3 +19,10 @@ local_shell:
 		--mount type=bind,src=$(PWD),dst=/usr/src/app \
 		advent-of-code \
 		/bin/bash
+
+.PHONY: run_day
+run_day:
+	@docker run -it --rm \
+		--mount type=bind,src=$(PWD),dst=/usr/src/app \
+		advent-of-code \
+		python3 scripts/day$(DAY).py
